@@ -1,0 +1,57 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven' //maven仓库插件
+
+android {
+    compileSdkVersion 27
+
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+//nexus私服使用
+uploadArchives {
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {
+            //Copy复制仓库路径
+            repository(url: 'http://118.24.121.245:8088/nexus/content/repositories/Libs') {
+                //你Nexus的账户密码
+                authentication(userName: 'admin', password: 'wangdukang123')
+            }
+            pom.project {
+                version '1.0.0'
+                groupId 'qrecyclerview'
+                artifactId 'qrecyclerviewLib'
+                packaging 'aar'
+                description 'recyclerview的封装'
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    //刷新框架 wdk没有使用特殊Header，可以不加SmartRefreshHeader
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'
+}
