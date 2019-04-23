@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.rv.lib.rv.ListLoadStateEnum;
 import com.rv.lib.refresh.RefreshAndLoadMoreListener;
 import com.rv.lib.strong.QSwipeRecyclerView;
+import com.rv.lib.utils.LoadMoreType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +67,7 @@ public class RefreshLoadMoreActivity extends AppCompatActivity {
     }
 
     private void initListener() {
+//        qSwipeRecyclerView.setLoadMoreType(LoadMoreType.NO_LOADMORE);
         qSwipeRecyclerView.setRefreshAndLoadMore(new RefreshAndLoadMoreListener() {
             @Override
             public void onRefresh() {

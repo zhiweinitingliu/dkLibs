@@ -170,7 +170,7 @@ public class QSwipeRecyclerView extends LinearLayout {
                 }
             });
 
-        } else if (loadmoreType == LoadMoreType.SMART_LOADMORE_TYPE.Q_RECYCLERVIEW_LOADMORE_TYPE) {
+        } else if (loadmoreType == LoadMoreType.Q_RECYCLERVIEW_LOADMORE_TYPE) {
             //qRecyclerView loadMore
             qRecyclerView.addFooterView(loadMoreView.getView());
             qRecyclerView.setLoadMoreView(loadMoreView);
