@@ -22,6 +22,12 @@ QSwipeRecyclerView参考了SmartRefreshLayout 和严大的SwipeRecyclerView 进�
 #### 3.在 Activity 或者 Fragment 中添加代码
 ```java
 
+       设置加载更多的类型
+       //SMART_LOADMORE_TYPE, // smartRefreshLayout loadMore
+       //Q_RECYCLERVIEW_LOADMORE_TYPE, //qRecyclerView loadMore
+       //NO_LOADMORE;//no lodmore
+       qSwipeRecyclerView.setLoadMoreType(LoadMoreType.NO_LOADMORE);
+      
        QSwipeRecyclerView qSwipeRecyclerView = findViewById(R.id.qSwipeRecyclerView);
        qSwipeRecyclerView.setLinearLayoutManager();
 
