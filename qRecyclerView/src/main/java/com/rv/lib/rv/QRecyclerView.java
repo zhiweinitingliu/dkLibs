@@ -201,7 +201,18 @@ public class QRecyclerView extends RecyclerView {
             }
 
         } else if (layoutManager instanceof StaggeredGridLayoutManager) {
+            StaggeredGridLayoutManager staggeredGridLayoutManager = (StaggeredGridLayoutManager) layoutManager;
 
+            int itemCount = layoutManager.getItemCount();
+            if (itemCount <= 0) return;
+
+            int[] lastVisiblePositionArray = staggeredGridLayoutManager.findLastCompletelyVisibleItemPositions(null);
+            int lastVisiblePosition = lastVisiblePositionArray[lastVisiblePositionArray.length - 1];
+
+            if (itemCount == lastVisiblePosition + 1 &&
+                    (mScrollState == SCROLL_STATE_DRAGGING || mScrollState == SCROLL_STATE_SETTLING)) {
+                dispatchLoadMore();
+            }
 
         }
     }
