@@ -72,3 +72,6 @@ QSwipeRecyclerView参考了SmartRefreshLayout 和严大的SwipeRecyclerView 进�
       qSwipeRecyclerView.addHeaderView(textView);
       qSwipeRecyclerView.addFooterView(textViewFooter);
 ```
+
+#### 效果图
+<img src="image/refresh_loadmore.gif" width="32%">
