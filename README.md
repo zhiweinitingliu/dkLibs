@@ -41,3 +41,28 @@ QSwipeRecyclerView参考了SmartRefreshLayout 和严大的SwipeRecyclerView 进�
             }
         });
 ```
+
+#### 添加header\footer
+```java
+
+      TextView textView = new TextView(this);
+      textView.setText("******header******");
+      textView.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Toast.makeText(RefreshLoadMoreActivity.this, "我是第一个header", Toast.LENGTH_SHORT).show();
+          }
+      });
+
+      TextView textViewFooter = new TextView(this);
+      textViewFooter.setText("*****footer*********");
+      textViewFooter.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Toast.makeText(RefreshLoadMoreActivity.this, "我是第一个footer", Toast.LENGTH_SHORT).show();
+          }
+      });
+
+      qSwipeRecyclerView.addHeaderView(textView);
+      qSwipeRecyclerView.addFooterView(textViewFooter);
+```
