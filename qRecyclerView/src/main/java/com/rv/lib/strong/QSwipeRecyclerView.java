@@ -17,6 +17,7 @@ import com.rv.lib.refresh.MLoadMoreListener;
 import com.rv.lib.refresh.MRefreshListener;
 import com.rv.lib.refresh.RefreshAndLoadMoreListener;
 import com.rv.lib.refresh.RefreshLoadMoreHelper;
+import com.rv.lib.utils.LoadMoreType;
 import com.rv.lib.utils.RvUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshFooter;
@@ -35,10 +36,7 @@ import com.scwang.smartrefresh.layout.util.DensityUtil;
  */
 public class QSwipeRecyclerView extends LinearLayout {
 
-    public static int SMART_LOADMORE_TYPE = 10010;
-    public static int Q_RECYCLERVIEW_LOADMORE_TYPE = 10011;
-    public static int NO_LOADMORE = 10000;
-    private int loadmoreType = Q_RECYCLERVIEW_LOADMORE_TYPE;
+    private LoadMoreType loadmoreType = LoadMoreType.Q_RECYCLERVIEW_LOADMORE_TYPE;
 
 
     private SmartRefreshLayout smartRefreshLayout;
@@ -141,12 +139,10 @@ public class QSwipeRecyclerView extends LinearLayout {
     }
 
     /**
-     * private int NO_LOADMORE = 10000;
-     * private int SMART_LOADMORE_TYPE = 10010;
-     * private int Q_RECYCLERVIEW_LOADMORE_TYPE = 10011;
+     * LoadMoreType
      */
-    public void setLoadMoreType(int type) {
-        loadmoreType = type;
+    public void setLoadMoreType(LoadMoreType loadmoreType) {
+        this.loadmoreType = loadmoreType;
     }
 
     RefreshAndLoadMoreListener mRefreshAndLoadMoreListener;
@@ -164,7 +160,7 @@ public class QSwipeRecyclerView extends LinearLayout {
         });
 
 
-        if (loadmoreType == SMART_LOADMORE_TYPE) {
+        if (loadmoreType == LoadMoreType.SMART_LOADMORE_TYPE) {
             //smartRefreshLayout loadMore
             smartRefreshLayout.setRefreshFooter(refreshFooter);
             refreshLoadMoreHelper.setOnLoadMoreListener(new MLoadMoreListener() {
@@ -174,7 +170,7 @@ public class QSwipeRecyclerView extends LinearLayout {
                 }
             });
 
-        } else if (loadmoreType == Q_RECYCLERVIEW_LOADMORE_TYPE) {
+        } else if (loadmoreType == LoadMoreType.SMART_LOADMORE_TYPE.Q_RECYCLERVIEW_LOADMORE_TYPE) {
             //qRecyclerView loadMore
             qRecyclerView.addFooterView(loadMoreView.getView());
             qRecyclerView.setLoadMoreView(loadMoreView);
@@ -209,14 +205,14 @@ public class QSwipeRecyclerView extends LinearLayout {
      * @param loadState load state , for example: FIRSTLOAD, REFRESH, LOADMORE
      */
     public void finishLoadMore(boolean dataEmpty, boolean hasMore, ListLoadStateEnum loadState) {
-        if (loadmoreType == SMART_LOADMORE_TYPE) {
+        if (loadmoreType == LoadMoreType.SMART_LOADMORE_TYPE) {
             //smartRefreshLayout load more
             smartRefreshLayout.finishLoadMore();
             smartRefreshLayout.setNoMoreData(hasMore);
 
-        } else if (loadmoreType == Q_RECYCLERVIEW_LOADMORE_TYPE) {
+        } else if (loadmoreType == LoadMoreType.Q_RECYCLERVIEW_LOADMORE_TYPE) {
             //qRecyclerView load more
-            qRecyclerView.loadMoreFinish(dataEmpty, hasMore,loadState);
+            qRecyclerView.loadMoreFinish(dataEmpty, hasMore, loadState);
         }
     }
 
