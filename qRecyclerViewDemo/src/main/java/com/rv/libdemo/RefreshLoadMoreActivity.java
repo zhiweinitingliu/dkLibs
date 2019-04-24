@@ -2,7 +2,9 @@ package com.rv.libdemo;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +27,8 @@ import java.util.List;
  */
 public class RefreshLoadMoreActivity extends AppCompatActivity {
 
+    private FloatingActionButton add;
+    private FloatingActionButton cut;
     private QSwipeRecyclerView qSwipeRecyclerView;
     LoadMoreAdapter loadMoreAdapter;
     List<String> listData = new ArrayList<>();
@@ -35,6 +39,8 @@ public class RefreshLoadMoreActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rv_refresh_load_more);
+        add=findViewById(R.id.add);
+        cut=findViewById(R.id.cut);
         qSwipeRecyclerView = findViewById(R.id.qSwipeRecyclerView);
         qSwipeRecyclerView.setLinearLayoutManager();
 
@@ -61,6 +67,12 @@ public class RefreshLoadMoreActivity extends AppCompatActivity {
 
         qSwipeRecyclerView.addHeaderView(textView);
         qSwipeRecyclerView.addFooterView(textViewFooter);
+
+        //RecyclerView  item animator
+        DefaultItemAnimator defaultItemAnimator = new DefaultItemAnimator();
+        defaultItemAnimator.setAddDuration(1000);
+        defaultItemAnimator.setRemoveDuration(1000);
+        qSwipeRecyclerView.getRecyclerView().setItemAnimator(defaultItemAnimator);
 
         initListener();
         initData();
@@ -94,7 +106,24 @@ public class RefreshLoadMoreActivity extends AppCompatActivity {
                 }, 3000);
             }
         });
+
+        cut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listData!=null && listData.size()>4)
+                loadMoreAdapter.addData(5);
+            }
+        });
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listData!=null && listData.size()>5)
+                loadMoreAdapter.removeData(5);
+            }
+        });
     }
+
 
     private void refreshData() {
         listData.clear();

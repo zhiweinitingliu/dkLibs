@@ -101,6 +101,13 @@ public class QSwipeRecyclerView extends LinearLayout {
     }
 
     /**
+     * set recyclerview item animator
+     */
+    public void setItemAnimator(RecyclerView.ItemAnimator itemAnimator) {
+        qRecyclerView.setItemAnimator(itemAnimator);
+    }
+
+    /**
      * Add view at the headers.
      */
     public void addHeaderView(View view) {

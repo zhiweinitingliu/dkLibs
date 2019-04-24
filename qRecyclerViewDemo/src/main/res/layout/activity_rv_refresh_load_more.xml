@@ -4,14 +4,28 @@
     android:layout_height="match_parent">
 
     <!--<Button-->
-        <!--android:id="@+id/btn_refresh"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:text="刷新"/>-->
+    <!--android:id="@+id/btn_refresh"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:text="刷新"/>-->
 
     <com.rv.lib.strong.QSwipeRecyclerView
         android:id="@+id/qSwipeRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/cut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorFFBBAA"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>

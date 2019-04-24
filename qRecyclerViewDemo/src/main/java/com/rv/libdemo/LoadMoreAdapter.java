@@ -33,6 +33,16 @@ public class LoadMoreAdapter extends RecyclerView.Adapter {
         this.listData = listData;
     }
 
+    public void addData(int position){
+        listData.add(position,"new data"+position);
+        notifyItemInserted(position);
+    }
+
+    public void removeData(int position){
+        listData.remove(position);
+        notifyItemRemoved(position);
+    }
+
     @Override
     public int getItemCount() {
         return listData == null ? 0 : listData.size();
