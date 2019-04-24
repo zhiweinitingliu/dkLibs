@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.rv.lib.rv.ListLoadStateEnum;
 import com.rv.lib.refresh.RefreshAndLoadMoreListener;
 import com.rv.lib.strong.QSwipeRecyclerView;
-import com.rv.lib.utils.LoadMoreType;
+import com.rv.lib.utils.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class RefreshLoadMoreActivity extends AppCompatActivity {
 
         loadMoreAdapter = new LoadMoreAdapter(this);
         qSwipeRecyclerView.setAdapter(loadMoreAdapter);
-
+        qSwipeRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(this).color(R.color.colorEEEEEE).size(10).build());
         TextView textView = new TextView(this);
         textView.setText("阿道夫房间爱上克劳福德疯狂拉升京东方法律考试的反馈");
         textView.setOnClickListener(new View.OnClickListener() {

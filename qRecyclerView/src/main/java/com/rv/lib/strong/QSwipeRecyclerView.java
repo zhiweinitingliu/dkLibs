@@ -93,6 +93,14 @@ public class QSwipeRecyclerView extends LinearLayout {
     }
 
     /**
+     * add item decoration
+     * provide a class ItemDivider.java
+     */
+    public void addItemDecoration(RecyclerView.ItemDecoration decor) {
+        qRecyclerView.addItemDecoration(decor);
+    }
+
+    /**
      * Add view at the headers.
      */
     public void addHeaderView(View view) {
